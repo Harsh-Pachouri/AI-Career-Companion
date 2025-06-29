@@ -3,12 +3,12 @@
 An intelligent Streamlit application that analyzes resumes, provides improvement suggestions, and generates personalized cover letters using AI-powered insights.
 Features
 
-Resume Upload & Parsing: Upload PDF resumes and extract text content automatically
+- Resume Upload & Parsing: Upload PDF resumes and extract text content automatically
 Smart Resume Analysis: Get ranked, actionable improvement suggestions tailored to specific job titles
-Cover Letter Generation: Create personalized cover letters based on your resume and job descriptions
-AI-Powered: Utilizes Meta's Llama-3.3-70B model via Together AI for intelligent recommendations
-Secure: Private deployment with encrypted API key management
-Responsive: Works seamlessly on desktop and mobile devices
+- Cover Letter Generation: Create personalized cover letters based on your resume and job descriptions
+- AI-Powered: Utilizes Meta's Llama-3.3-70B model via Together AI for intelligent recommendations
+- Secure: Private deployment with encrypted API key management
+- Responsive: Works seamlessly on desktop and mobile devices
 
 ## Tech Stack
 
