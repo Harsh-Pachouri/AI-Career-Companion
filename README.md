@@ -79,7 +79,7 @@ Download or copy the final version
 🔐 Security & Privacy
 
 🔒 Private Repository: Code and configurations remain secure
-🗝️ API Key Protection: Keys stored in encrypted Streamlit secrets
+🗝️ API Key Protection: Keys stored in encrypted Streamlit secret
 📄 No Data Storage: Uploaded resumes are processed in memory only
 🛡️ HTTPS: All communications encrypted in transit
 
