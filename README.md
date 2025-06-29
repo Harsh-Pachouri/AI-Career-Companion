@@ -22,26 +22,36 @@ Deployment: Streamlit Community Cloud
 Try the App (Replace with your actual deployment URL)
 Prerequisites
 
-Python 3.8 or higher
-Together AI API key (Get one here)
-Git (for deployment)
+- Python 3.8 or higher
+- Together AI API key 
+- Git (for deployment)
 
-🔧 Installation
-Local Development
+### Installation:
 
 Clone the repository
-bashgit clone https://github.com/yourusername/resume-analyzer-app.git
-cd resume-analyzer-app
 
-Create virtual environment
-bashpython -m venv venv
+```bash
+  git clone https://github.com/yourusername/resume-analyzer-app.git
+```
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
+Create virtual environment
+
+```bash
+  python -m venv venv
+```
+
 Install dependencies
-bashpip install -r requirements.txt
+
+```bash
+  pip install -r requirements.txt
+```
 
 Run the application
-bashstreamlit run app.py
+
+```bash
+  bashstreamlit run app.py
+```
 
 Open your browser to http://localhost:8501
 
