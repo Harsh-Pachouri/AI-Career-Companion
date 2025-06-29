@@ -66,22 +66,22 @@ Review and customize the generated cover letter
 Download or copy the final version
 
 ## Example Workflow
-📄 Upload: "John_Doe_Resume.pdf"
-🎯 Job Title: "Data Scientist"
-📋 Improvements: 
+- Upload: "John_Doe_Resume.pdf"
+- Job Title: "Data Scientist"
+- Improvements: 
    1. Add Python and SQL keywords to skills section
    2. Quantify machine learning project impact with metrics
    3. Include data visualization tools experience
    ...
 
-📝 Job Description: "We're seeking a Data Scientist with 3+ years..."
-✉️ Generated Cover Letter: Professional, tailored letter highlighting relevant experience
-🔐 Security & Privacy
+- Job Description: "We're seeking a Data Scientist with 3+ years..."
+- Generated Cover Letter: Professional, tailored letter highlighting relevant experience
+- Security & Privacy
 
-🔒 Private Repository: Code and configurations remain secure
-🗝️ API Key Protection: Keys stored in encrypted Streamlit secret
-📄 No Data Storage: Uploaded resumes are processed in memory only
-🛡️ HTTPS: All communications encrypted in transit
+- Private Repository: Code and configurations remain secure
+- API Key Protection: Keys stored in encrypted Streamlit secret
+- No Data Storage: Uploaded resumes are processed in memory only
+- HTTPS: All communications encrypted in transit
 
 ## Project Structure
 resume-analyzer-app/
