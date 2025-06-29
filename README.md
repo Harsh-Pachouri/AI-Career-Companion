@@ -1,4 +1,4 @@
-Resume Analyzer & Cover Letter Generator
+##Resume Analyzer & Cover Letter Generator
 An intelligent Streamlit application that analyzes resumes, provides improvement suggestions, and generates personalized cover letters using AI-powered insights.
 Features
 
