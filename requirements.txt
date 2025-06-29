@@ -4,3 +4,4 @@ langchain==0.1.16
 langchain-community==0.0.34
 python-dotenv==1.0.1
 together==1.2.13  # Latest stable version that exists
+python-docx==1.1.0

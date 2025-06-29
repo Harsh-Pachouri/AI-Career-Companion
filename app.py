@@ -113,7 +113,7 @@ if 'job_description' not in st.session_state:
 if 'analysis_results' not in st.session_state:
     st.session_state.analysis_results = None
 if 'cover_letter' not in st.session_state:
-    st.session_state.cover_letter = None
+    st.session_state.cover_letter = ""
 
 # Analysis functions
 def analyze_resume(job_title, resume_text):
@@ -151,35 +151,40 @@ def main():
     with st.container():
         st.header("Step 1: Upload Your Resume")
         uploaded_file = st.file_uploader(
-            "Choose a PDF file", 
+            "Choose a PDF file (max 10MB)", 
             type="pdf", 
             accept_multiple_files=False,
-            help="Maximum file size: 10MB"
+            help="For optimal performance, please keep files under 10MB"
         )
 
         if uploaded_file is not None:
-            try:
-                with pdfplumber.open(uploaded_file) as pdf:
-                    text = "\n".join([page.extract_text() for page in pdf.pages])
-                st.session_state.resume_text = text
-                st.success("Resume successfully uploaded and parsed!")
-                with st.expander("View extracted resume text"):
-                    st.text(text)
-            except Exception as e:
-                st.error(f"Error processing PDF: {str(e)}")
+            if uploaded_file.size > 10 * 1024 * 1024:  # 10MB in bytes
+                st.error("File size exceeds 10MB limit. Please upload a smaller file.")
+            else:
+                try:
+                    with pdfplumber.open(uploaded_file) as pdf:
+                        text = "\n".join([page.extract_text() for page in pdf.pages])
+                    st.session_state.resume_text = text
+                    st.success("Resume successfully uploaded and parsed!")
+                    with st.expander("View extracted resume text"):
+                        st.text(text)
+                except Exception as e:
+                    st.error(f"Error processing PDF: {str(e)}")
 
     # Job title and analysis section
     with st.container():
         st.header("Step 2: Enter Job Title")
         job_title = st.text_input(
             "Target job title",
+            value=st.session_state.get("job_title", ""),
             placeholder="e.g. Senior Software Engineer",
-            help="Enter the job title you're applying for"
+            help="Enter the job title you're applying for",
+            key="job_title_input",
+            on_change=lambda: st.session_state.update({"job_title": st.session_state.job_title_input})
         )
 
-        if job_title:
-            st.session_state.job_title = job_title
-            st.success(f"Analyzing resume for: {job_title}")
+        if st.session_state.get('job_title'):
+            st.success(f"Analyzing resume for: {st.session_state.job_title}")
 
         # Analysis button with enhanced hover help
         missing_items = []
@@ -210,17 +215,17 @@ def main():
             with st.expander("Resume Improvement Suggestions"):
                 st.markdown(st.session_state.analysis_results["suggestions"])
 
-    # Cover letter generation section
+    # Job description section
     with st.container():
-        st.header("Step 3: Generate Cover Letter")
-        job_description = st.text_area(
+        st.header("Step 3: Enter Job Description")
+        job_desc = st.text_area(
             "Paste the job description",
-            height=200,
-            help="Paste the full job description for personalized cover letter"
+            value=st.session_state.get("job_description", ""),
+            placeholder="Paste the full job description here...",
+            help="This helps generate a targeted cover letter",
+            key="job_desc_input",
+            on_change=lambda: st.session_state.update({"job_description": st.session_state.job_desc_input})
         )
-
-        if job_description:
-            st.session_state.job_description = job_description
 
         if st.session_state.resume_text and st.session_state.job_title and st.session_state.job_description:
             if st.button("Generate Cover Letter", type="primary"):
@@ -238,11 +243,24 @@ def main():
             if st.session_state.cover_letter:
                 with st.expander("View Cover Letter"):
                     st.markdown(st.session_state.cover_letter)
+                from docx import Document
+                import io
+                
+                # Create Word document
+                doc = Document()
+                doc.add_paragraph(st.session_state.cover_letter)
+                
+                # Save to bytes buffer
+                doc_bytes = io.BytesIO()
+                doc.save(doc_bytes)
+                doc_bytes.seek(0)
+                
+                # Download button
                 st.download_button(
-                    label="Download Cover Letter",
-                    data=st.session_state.cover_letter,
-                    file_name="cover_letter.txt",
-                    mime="text/plain"
+                    label="Download Cover Letter as Word",
+                    data=doc_bytes,
+                    file_name="generated_cover_letter.docx",
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                 )
         elif st.button("Generate Cover Letter", disabled=True):
             st.warning("Please complete all previous steps first")
