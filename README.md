@@ -10,7 +10,7 @@ AI-Powered: Utilizes Meta's Llama-3.3-70B model via Together AI for intelligent 
 Secure: Private deployment with encrypted API key management
 Responsive: Works seamlessly on desktop and mobile devices
 
-Tech Stack
+## Tech Stack
 
 Frontend: Streamlit
 PDF Processing: pdfplumber
@@ -18,7 +18,7 @@ AI Integration: LangChain + Together AI
 Model: meta-llama/Llama-3.3-70B-Instruct-Turbo-Free
 Deployment: Streamlit Community Cloud
 
-Live Demo
+## Live Demo
 Try the App (Replace with your actual deployment URL)
 Prerequisites
 
@@ -45,7 +45,7 @@ bashstreamlit run app.py
 
 Open your browser to http://localhost:8501
 
-📖 Usage Guide
+## Usage Guide
 Step 1: Upload Resume
 
 Click "Browse files" or drag & drop your PDF resume
@@ -65,7 +65,7 @@ Click "Generate Cover Letter"
 Review and customize the generated cover letter
 Download or copy the final version
 
-🎯 Example Workflow
+## Example Workflow
 📄 Upload: "John_Doe_Resume.pdf"
 🎯 Job Title: "Data Scientist"
 📋 Improvements: 
@@ -83,7 +83,7 @@ Download or copy the final version
 📄 No Data Storage: Uploaded resumes are processed in memory only
 🛡️ HTTPS: All communications encrypted in transit
 
-📁 Project Structure
+## Project Structure
 resume-analyzer-app/
 ├── app.py                 # Main Streamlit application
 ├── requirements.txt       # Python dependencies
@@ -94,7 +94,7 @@ resume-analyzer-app/
 │   └── config.toml      # Streamlit configuration
 └── utils/
     └── prompts.py       # AI prompt templates
-🤝 Contributing
+## Contributing
 
 Fork the repository
 Create a feature branch: git checkout -b feature/amazing-feature
